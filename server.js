@@ -1,6 +1,7 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
 
 //Allow all requests from all domains & localhost
 app.all('/*', function(req, res, next) {
@@ -15,7 +16,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', function(req, res) {
     console.log("GET From SERVER");
-    res.send("We made it past the firewalls!");
+  const serverStatus = fetch('https://mcapi.us/server/status?ip=129.80.229.90')
+    res.send(serverStatus);
 });
 
 app.post('/', function(req, res) {
