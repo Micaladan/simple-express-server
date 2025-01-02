@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
-    fs.readFile(__dirname + '/public/index.html', 'utf8', (err, text) => {
+    fs.readFile(__dirname + 'index.html', 'utf8', (err, text) => {
         res.send(text);
     });
 });
