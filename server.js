@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', function(req, res) {
     console.log("GET From SERVER");
-    res.render(index.html);
+    res.render('index.html');
 });
 
 app.post('/', function(req, res) {
