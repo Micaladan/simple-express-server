@@ -14,10 +14,10 @@ app.all('/*', function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/', (req, res) => {
-    fs.readFile(__dirname + 'index.html', 'utf8', (err, text) => {
-        res.send(text);
-    });
+app.use(express.static('./'));
+
+app.get('/', function(req, res) {
+    res.render('index.html');
 });
 
 app.post('/', function(req, res) {
