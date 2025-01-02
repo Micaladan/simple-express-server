@@ -13,21 +13,10 @@ app.all('/*', function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.configure(function(){
-  // disable layout
-  app.set("view options", {layout: false});
-
-  // make a custom html template
-  app.register('.html', {
-    compile: function(str, options){
-      return function(locals){
-        return str;
-      };
-    }
-  });
-});
-app.get('/', function(req, res){
-  res.render("index.html");
+app.get('/', (req, res) => {
+    fs.readFile(__dirname + '/public/index.html', 'utf8', (err, text) => {
+        res.send(text);
+    });
 });
 
 app.post('/', function(req, res) {
