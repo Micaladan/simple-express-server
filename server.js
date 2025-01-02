@@ -13,9 +13,21 @@ app.all('/*', function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get('/', function(req, res) {
-    console.log("GET From SERVER");
-    res.render('index.html');
+app.configure(function(){
+  // disable layout
+  app.set("view options", {layout: false});
+
+  // make a custom html template
+  app.register('.html', {
+    compile: function(str, options){
+      return function(locals){
+        return str;
+      };
+    }
+  });
+});
+app.get('/', function(req, res){
+  res.render("index.html");
 });
 
 app.post('/', function(req, res) {
