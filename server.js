@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', function(req, res) {
     console.log("GET From SERVER");
-      res.send(fetch('https://mcapi.us/server/status?ip=129.80.229.90'));
+    res.render(index.html);
 });
 
 app.post('/', function(req, res) {
