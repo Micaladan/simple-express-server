@@ -3,6 +3,7 @@ import fetch from "node-fetch";
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const fetch = require("node-fetch");
 
 
 //Allow all requests from all domains & localhost
